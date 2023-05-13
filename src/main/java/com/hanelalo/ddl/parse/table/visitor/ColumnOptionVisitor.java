@@ -1,0 +1,63 @@
+package com.hanelalo.ddl.parse.table.visitor;
+
+import com.hanelalo.ddl.parse.engine.DdlParser;
+import com.hanelalo.ddl.parse.engine.DdlParserBaseVisitor;
+import com.hanelalo.ddl.parse.table.Column;
+import org.antlr.v4.runtime.tree.ParseTree;
+
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+public class ColumnOptionVisitor extends DdlParserBaseVisitor<Column> {
+
+    private final ColumnTypeVisitor columnTypeVisitor;
+
+    public ColumnOptionVisitor(ColumnTypeVisitor columnTypeVisitor) {
+        this.columnTypeVisitor = columnTypeVisitor;
+    }
+
+    @Override
+    public Column visitColumnOption(DdlParser.ColumnOptionContext ctx) {
+        Column column = new Column();
+        column.setName(ctx.columnName().id().ID().getText());
+
+        parseComment(ctx, column);
+
+        parseColumnType(ctx.columnType(), column);
+
+        parseColumnOptions(ctx.columnAttrOptions(), column);
+
+        return column;
+    }
+
+    private void parseComment(DdlParser.ColumnOptionContext ctx, Column column) {
+        DdlParser.CommentContext commentContext = ctx.comment();
+        column.setComment(Objects.nonNull(commentContext) ? commentContext.commentContent().getText() : null);
+    }
+
+    private void parseColumnOptions(DdlParser.ColumnAttrOptionsContext columnAttrOptionsContext, Column column) {
+        for (DdlParser.ColumnAttrOptionContext columnAttrOptionContext : columnAttrOptionsContext.columnAttrOption()) {
+            if (Objects.nonNull(columnAttrOptionContext.defaultOption())) {
+                column.setDefaultValue(columnAttrOptionContext.defaultOption().defaultValue().children.stream()
+                        .map(ParseTree::getText).collect(Collectors.joining(" ")));
+                continue;
+            }
+            if (Objects.nonNull(columnAttrOptionContext.autoincrementOption())) {
+                column.setAutoIncrement(true);
+                continue;
+            }
+            if (Objects.nonNull(columnAttrOptionContext.nullOption()) && Objects.isNull(columnAttrOptionContext.nullOption().NOT())) {
+                column.setNullable(true);
+                continue;
+            }
+            if (Objects.nonNull(columnAttrOptionContext.primaryKeyOption())) {
+                column.setPrimaryKey(true);
+            }
+        }
+    }
+
+    private void parseColumnType(DdlParser.ColumnTypeContext columnTypeContext, Column column) {
+        column.setColumnType(columnTypeContext.accept(columnTypeVisitor));
+    }
+
+}
