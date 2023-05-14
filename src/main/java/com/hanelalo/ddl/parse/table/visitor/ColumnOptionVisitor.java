@@ -54,8 +54,8 @@ public class ColumnOptionVisitor extends DdlParserBaseVisitor<Column> {
                 column.setAutoIncrement(true);
                 continue;
             }
-            if (Objects.nonNull(columnAttrOptionContext.nullOption()) && Objects.isNull(columnAttrOptionContext.nullOption().NOT())) {
-                column.setNullable(true);
+            if (Objects.nonNull(columnAttrOptionContext.nullOption()) && Objects.nonNull(columnAttrOptionContext.nullOption().NOT())) {
+                column.setNullable(false);
                 continue;
             }
             if (Objects.nonNull(columnAttrOptionContext.primaryKeyOption())) {

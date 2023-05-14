@@ -16,7 +16,7 @@ public class Column {
 
     private boolean autoIncrement;
 
-    private boolean nullable;
+    private boolean nullable = true;
 
     private String defaultValue;
 

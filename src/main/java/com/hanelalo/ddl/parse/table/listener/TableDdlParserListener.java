@@ -94,8 +94,8 @@ public class TableDdlParserListener extends DdlParserBaseListener {
 
     @Override
     public void enterNullOption(DdlParser.NullOptionContext ctx) {
-        if (Objects.isNull(ctx.NOT())) {
-            current.currentColumn().setNullable(true);
+        if (Objects.nonNull(ctx.NOT())) {
+            current.currentColumn().setNullable(false);
         }
     }
 
@@ -122,11 +122,6 @@ public class TableDdlParserListener extends DdlParserBaseListener {
         comment.setLimitedQuote(commentStr.substring(0, 1));
         comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
         current.currentColumn().setComment(comment);
-    }
-
-    @Override
-    public void exitColumnOption(DdlParser.ColumnOptionContext ctx) {
-        System.out.println("列[" + current.currentColumn().getName() + "]解析完成");
     }
 
     @Override
