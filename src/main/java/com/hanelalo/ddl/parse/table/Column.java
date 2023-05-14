@@ -3,6 +3,8 @@ package com.hanelalo.ddl.parse.table;
 import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 public class Column {
 
@@ -18,7 +20,7 @@ public class Column {
 
     private String defaultValue;
 
-    private String comment;
+    private Comment comment;
 
     @Override
     public String toString() {
@@ -36,8 +38,8 @@ public class Column {
         if(StrUtil.isNotBlank(defaultValue)){
             column.append(" DEFAULT ").append(defaultValue);
         }
-        if(StrUtil.isNotBlank(comment)){
-            column.append(" COMMENT ").append(comment);
+        if(Objects.nonNull(comment)){
+            column.append(comment);
         }
         return column.toString();
     }

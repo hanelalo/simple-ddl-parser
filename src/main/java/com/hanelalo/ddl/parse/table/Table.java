@@ -1,7 +1,6 @@
 package com.hanelalo.ddl.parse.table;
 
 import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +20,7 @@ public class Table {
 
     private String tableName;
 
-    private String comment;
+    private Comment comment;
 
     private Long autoIncrement;
 
@@ -53,8 +52,8 @@ public class Table {
     public String toString() {
         StringBuilder createTable = new StringBuilder("CREATE TABLE `");
         createTable.append(tableName).append("` (\n").append(tableDefinitionsString()).append("\n)");
-        if (StrUtil.isNotBlank(comment)) {
-            createTable.append(" COMMENT ").append(comment);
+        if (Objects.nonNull(comment)) {
+            createTable.append(comment);
         }
         if (Objects.nonNull(autoIncrement)) {
             createTable.append(" AUTO_INCREMENT ").append(autoIncrement);

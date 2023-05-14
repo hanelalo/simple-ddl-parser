@@ -2,6 +2,7 @@ package com.hanelalo.ddl.parse.table.visitor;
 
 import com.hanelalo.ddl.parse.engine.DdlParser;
 import com.hanelalo.ddl.parse.engine.DdlParserBaseVisitor;
+import com.hanelalo.ddl.parse.table.Comment;
 import com.hanelalo.ddl.parse.table.Table;
 
 import java.util.Objects;
@@ -49,14 +50,18 @@ public class CreatTableVisitor extends DdlParserBaseVisitor<Table> {
         });
     }
 
-    private static void parseTableOptions(DdlParser.CreatTableContext ctx, Table table) {
+    private void parseTableOptions(DdlParser.CreatTableContext ctx, Table table) {
         ctx.tableOptions().tableOption().forEach(tableOptionContext -> parseTableOption(tableOptionContext, table));
     }
 
-    private static void parseTableOption(DdlParser.TableOptionContext tableOptionContext, Table table) {
+    private void parseTableOption(DdlParser.TableOptionContext tableOptionContext, Table table) {
         DdlParser.TableCommentContext tableCommentContext = tableOptionContext.tableComment();
         if (Objects.nonNull(tableCommentContext)) {
-            table.setComment(tableCommentContext.tabelCommentContent().getText());
+            Comment comment = new Comment();
+            String commentStr = tableCommentContext.tabelCommentContent().getText();
+            comment.setLimitedQuote(commentStr.substring(0, 1));
+            comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
+            table.setComment(comment);
         }
         DdlParser.AutoIncrementTableOptionContext autoIncrementTableOptionContext = tableOptionContext.autoIncrementTableOption();
         if (Objects.nonNull(autoIncrementTableOptionContext)) {

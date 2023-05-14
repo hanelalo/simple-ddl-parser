@@ -16,12 +16,12 @@ public class VisitorTest {
     public void test() {
         DdlLexer ddlLexer = new DdlLexer(CharStreams.fromString("create table t_fans_info\n" +
                 "(   id   int primary key auto_increment,\n" +
-                "    name text(100) null,\n" +
-                "    time datetime default current_timestamp on update current_timestamp,\n" +
+                "    name text(100) null default 'haha',\n" +
+                "    time datetime default current_timestamp on update current_timestamp comment '时间',\n" +
                 "    primary key pk_id  (id,name),\n" +
                 "    unique key  (name),\n" +
                 "    key idx_time (time)\n" +
-                ");\n" +
+                ") auto_increment 9991 comment '测试2';\n" +
                 "create table t_fans_info_1\n" +
                 "(   id   int primary key auto_increment,\n" +
                 "    name text(100) null,\n" +

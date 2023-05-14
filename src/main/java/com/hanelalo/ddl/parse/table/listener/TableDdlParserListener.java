@@ -31,7 +31,11 @@ public class TableDdlParserListener extends DdlParserBaseListener {
 
     @Override
     public void enterTabelCommentContent(DdlParser.TabelCommentContentContext ctx) {
-        current.get().setComment(ctx.getText());
+        String commentStr = ctx.getText();
+        Comment comment = new Comment();
+        comment.setLimitedQuote(commentStr.substring(0, 1));
+        comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
+        current.get().setComment(comment);
     }
 
     @Override
@@ -113,7 +117,11 @@ public class TableDdlParserListener extends DdlParserBaseListener {
 
     @Override
     public void enterCommentContent(DdlParser.CommentContentContext ctx) {
-        current.currentColumn().setComment(ctx.getText());
+        String commentStr = ctx.getText();
+        Comment comment = new Comment();
+        comment.setLimitedQuote(commentStr.substring(0, 1));
+        comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
+        current.currentColumn().setComment(comment);
     }
 
     @Override
