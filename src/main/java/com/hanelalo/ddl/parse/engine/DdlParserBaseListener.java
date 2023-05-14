@@ -317,6 +317,18 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIndexName(DdlParser.IndexNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIndexName(DdlParser.IndexNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIndexColumns(DdlParser.IndexColumnsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -336,6 +348,18 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPrimaryKey(DdlParser.PrimaryKeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrimaryKeyName(DdlParser.PrimaryKeyNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrimaryKeyName(DdlParser.PrimaryKeyNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

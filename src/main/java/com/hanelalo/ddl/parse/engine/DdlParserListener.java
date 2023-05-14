@@ -258,6 +258,16 @@ public interface DdlParserListener extends ParseTreeListener {
 	 */
 	void exitIndexOption(DdlParser.IndexOptionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link DdlParser#indexName}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndexName(DdlParser.IndexNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#indexName}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndexName(DdlParser.IndexNameContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link DdlParser#indexColumns}.
 	 * @param ctx the parse tree
 	 */
@@ -277,6 +287,16 @@ public interface DdlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrimaryKey(DdlParser.PrimaryKeyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#primaryKeyName}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrimaryKeyName(DdlParser.PrimaryKeyNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#primaryKeyName}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrimaryKeyName(DdlParser.PrimaryKeyNameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link DdlParser#primaryKeyColumn}.
 	 * @param ctx the parse tree

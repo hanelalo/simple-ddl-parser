@@ -161,6 +161,12 @@ public interface DdlParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIndexOption(DdlParser.IndexOptionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link DdlParser#indexName}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIndexName(DdlParser.IndexNameContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link DdlParser#indexColumns}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -172,6 +178,12 @@ public interface DdlParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPrimaryKey(DdlParser.PrimaryKeyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#primaryKeyName}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrimaryKeyName(DdlParser.PrimaryKeyNameContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link DdlParser#primaryKeyColumn}.
 	 * @param ctx the parse tree

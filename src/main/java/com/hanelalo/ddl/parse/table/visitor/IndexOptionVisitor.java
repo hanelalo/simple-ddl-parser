@@ -12,8 +12,11 @@ public class IndexOptionVisitor extends DdlParserBaseVisitor<Index> {
     @Override
     public Index visitIndexOption(DdlParser.IndexOptionContext ctx) {
         Index index = new Index();
-        DdlParser.IdContext nameContext = ctx.id();
-        index.setName(Objects.nonNull(nameContext) ? nameContext.ID().getText() : null);
+        DdlParser.IndexNameContext indexNameContext = ctx.indexName();
+        if (Objects.nonNull(indexNameContext)) {
+            DdlParser.IdContext nameContext = indexNameContext.id();
+            index.setName(Objects.nonNull(nameContext) ? nameContext.ID().getText() : null);
+        }
         index.setColumns(ctx.indexColumns().id().stream().map(id -> id.ID().getText()).collect(Collectors.toList()));
         if (Objects.nonNull(ctx.USING())) {
             index.setUsing("BTREE");

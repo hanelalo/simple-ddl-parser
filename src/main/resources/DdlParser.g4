@@ -50,11 +50,15 @@ defaultOption: DEFAULT defaultValue;
 
 defaultValue: ANY_STRING | NUMBER | (CURRENT_TIMESTAMP (ON UPDATE CURRENT_TIMESTAMP)?);
 
-indexOption: KEY id? LEFT_BRACKETS indexColumns RIGHT_BRACKETS (USING BTREE)?;
+indexOption: KEY indexName? LEFT_BRACKETS indexColumns RIGHT_BRACKETS (USING BTREE)?;
+
+indexName: id;
 
 indexColumns: id (COMMA id)*;
 
-primaryKey: PRIMARY KEY id? LEFT_BRACKETS primaryKeyColumn RIGHT_BRACKETS;
+primaryKey: PRIMARY KEY primaryKeyName? LEFT_BRACKETS primaryKeyColumn RIGHT_BRACKETS;
+
+primaryKeyName: id;
 
 primaryKeyColumn: id(COMMA id)*;
 

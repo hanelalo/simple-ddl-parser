@@ -12,8 +12,11 @@ public class PrimaryKeyVisitor extends DdlParserBaseVisitor<PrimaryKey> {
     @Override
     public PrimaryKey visitPrimaryKey(DdlParser.PrimaryKeyContext ctx) {
         PrimaryKey primaryKey = new PrimaryKey();
-        DdlParser.IdContext nameContext = ctx.id();
-        primaryKey.setName(Objects.nonNull(nameContext) ? nameContext.ID().getText() : null);
+        DdlParser.PrimaryKeyNameContext primaryKeyNameContext = ctx.primaryKeyName();
+        if(Objects.nonNull(primaryKeyNameContext)) {
+            DdlParser.IdContext nameContext = primaryKeyNameContext.id();
+            primaryKey.setName(Objects.nonNull(nameContext) ? nameContext.ID().getText() : null);
+        }
         primaryKey.setColumns(ctx.primaryKeyColumn().id().stream().map(id -> id.ID().getText()).collect(Collectors.toList()));
         return primaryKey;
     }
