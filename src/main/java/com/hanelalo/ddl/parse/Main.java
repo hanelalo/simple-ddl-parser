@@ -12,7 +12,6 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-
         DdlLexer ddlLexer = new DdlLexer(CharStreams.fromString("create table t_fans_info\n" +
                 "(   id   int primary key auto_increment,\n" +
                 "    name text(100) null comment '名称',\n" +
