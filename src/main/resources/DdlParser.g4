@@ -38,7 +38,9 @@ commentContent: ANY_STRING;
 
 columnAttrOptions: columnAttrOption*;
 
-columnAttrOption: primaryKeyOption | autoincrementOption | nullOption | defaultOption;
+columnAttrOption: primaryKeyOption | autoincrementOption | uniqueColumnAttrOption | nullOption | defaultOption;
+
+uniqueColumnAttrOption: UNIQUE;
 
 primaryKeyOption: PRIMARY KEY;
 

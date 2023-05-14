@@ -60,6 +60,10 @@ public class ColumnOptionVisitor extends DdlParserBaseVisitor<Column> {
             }
             if (Objects.nonNull(columnAttrOptionContext.primaryKeyOption())) {
                 column.setPrimaryKey(true);
+                continue;
+            }
+            if(Objects.nonNull(columnAttrOptionContext.uniqueColumnAttrOption())) {
+                column.setUnique(true);
             }
         }
     }

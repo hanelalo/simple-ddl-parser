@@ -116,6 +116,11 @@ public class TableDdlParserListener extends DdlParserBaseListener {
     }
 
     @Override
+    public void enterUniqueColumnAttrOption(DdlParser.UniqueColumnAttrOptionContext ctx) {
+        current.currentColumn().setUnique(true);
+    }
+
+    @Override
     public void enterCommentContent(DdlParser.CommentContentContext ctx) {
         String commentStr = ctx.getText();
         Comment comment = new Comment();

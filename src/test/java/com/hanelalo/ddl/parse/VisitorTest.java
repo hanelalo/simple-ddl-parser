@@ -20,7 +20,7 @@ public class VisitorTest {
     public void test() {
         DdlLexer ddlLexer = new DdlLexer(CharStreams.fromString("create table t_fans_info\n" +
                 "(   id   int primary key auto_increment,\n" +
-                "    name text(100) not null default 'haha',\n" +
+                "    name text(100) not null unique default 'haha',\n" +
                 "    time datetime default current_timestamp on update current_timestamp comment '时间',\n" +
                 "    primary key pk_id  (id,name),\n" +
                 "    unique key  (name),\n" +
@@ -65,6 +65,7 @@ public class VisitorTest {
         assertTrue(columns.get(0).isPrimaryKey());
         assertTrue(columns.get(0).isAutoIncrement());
         assertTrue(columns.get(0).isNullable());
+        assertFalse(columns.get(0).isUnique());
         assertNull(columns.get(0).getDefaultValue());
         assertNull(columns.get(0).getComment());
 
@@ -74,6 +75,7 @@ public class VisitorTest {
         assertFalse(columns.get(1).isPrimaryKey());
         assertFalse(columns.get(1).isAutoIncrement());
         assertFalse(columns.get(1).isNullable());
+        assertTrue(columns.get(1).isUnique());
         assertEquals("'haha'",columns.get(1).getDefaultValue());
         assertNull(columns.get(1).getComment());
 
@@ -83,6 +85,7 @@ public class VisitorTest {
         assertFalse(columns.get(2).isPrimaryKey());
         assertFalse(columns.get(2).isAutoIncrement());
         assertTrue(columns.get(2).isNullable());
+        assertFalse(columns.get(2).isUnique());
         assertEquals("current_timestamp on update current_timestamp",columns.get(2).getDefaultValue());
         assertNotNull(columns.get(2).getComment());
         assertEquals("'",columns.get(2).getComment().getLimitedQuote());
@@ -122,8 +125,7 @@ public class VisitorTest {
         UniqueKeyVisitor uniqueKeyVisitor = new UniqueKeyVisitor();
         CreatTableVisitor creatTableVisitor = new CreatTableVisitor(columnOptionVisitor, indexOptionVisitor, primaryKeyVisitor, uniqueKeyVisitor);
         TableDdlParserVisitor tableDdlParserVisitor = new TableDdlParserVisitor(creatTableVisitor);
-        List<Table> tables = tableDdlParserVisitor.visit(parser.parse());
-        return tables;
+        return tableDdlParserVisitor.visit(parser.parse());
     }
 
 }

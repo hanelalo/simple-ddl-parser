@@ -18,6 +18,8 @@ public class Column {
 
     private boolean nullable = true;
 
+    private boolean unique;
+
     private String defaultValue;
 
     private Comment comment;
@@ -31,6 +33,9 @@ public class Column {
         }
         if (autoIncrement) {
             column.append(" AUTO_INCREMENT");
+        }
+        if(unique){
+            column.append(" UNIQUE");
         }
         if (!nullable){
             column.append(" NOT NULL");
