@@ -15,8 +15,11 @@ public class ColumnType {
 
     private Long length;
 
+    private boolean unsigned;
+
     public String toString(){
-        return length == null ? type : type + "(" + length + ")";
+        String columnType = length == null ? type : type + "(" + length + ")";
+        return unsigned ? columnType + " UNSIGNED" : columnType;
     }
 
 }

@@ -19,7 +19,7 @@ public class ListenerTest {
     @Test
     public void test() {
         DdlLexer ddlLexer = new DdlLexer(CharStreams.fromString("create table t_fans_info\n" +
-                "(   id   int primary key auto_increment,\n" +
+                "(   id   int UNSIGNED primary key auto_increment,\n" +
                 "    name text(100) not null unique default 'haha',\n" +
                 "    time datetime default current_timestamp on update current_timestamp comment '时间',\n" +
                 "    primary key pk_id  (id,name),\n" +
@@ -63,6 +63,7 @@ public class ListenerTest {
 
         assertEquals("id", columns.get(0).getName());
         assertEquals("int", columns.get(0).getColumnType().getType());
+        assertTrue(columns.get(0).getColumnType().isUnsigned());
         assertNull(columns.get(0).getColumnType().getLength());
         assertTrue(columns.get(0).isPrimaryKey());
         assertTrue(columns.get(0).isAutoIncrement());
@@ -73,6 +74,7 @@ public class ListenerTest {
 
         assertEquals("name", columns.get(1).getName());
         assertEquals("text", columns.get(1).getColumnType().getType());
+        assertFalse(columns.get(1).getColumnType().isUnsigned());
         assertEquals(100L, columns.get(1).getColumnType().getLength().longValue());
         assertFalse(columns.get(1).isPrimaryKey());
         assertFalse(columns.get(1).isAutoIncrement());
@@ -83,6 +85,7 @@ public class ListenerTest {
 
         assertEquals("time", columns.get(2).getName());
         assertEquals("datetime", columns.get(2).getColumnType().getType());
+        assertFalse(columns.get(2).getColumnType().isUnsigned());
         assertNull(columns.get(2).getColumnType().getLength());
         assertFalse(columns.get(2).isPrimaryKey());
         assertFalse(columns.get(2).isAutoIncrement());

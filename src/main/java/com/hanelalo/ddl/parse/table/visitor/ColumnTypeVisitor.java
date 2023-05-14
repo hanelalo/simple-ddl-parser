@@ -12,6 +12,16 @@ public class ColumnTypeVisitor extends DdlParserBaseVisitor<ColumnType> {
         return ColumnType.builder()
                 .type(ctx.INT().getText())
                 .length(ctx.columnLength() == null ? null : NumberUtil.parseLong(ctx.columnLength().NUMBER().getText()))
+                .unsigned(ctx.UNSIGNED() != null)
+                .build();
+    }
+
+    @Override
+    public ColumnType visitBigintType(DdlParser.BigintTypeContext ctx) {
+        return ColumnType.builder()
+                .type(ctx.BIGINT().getText())
+                .length(ctx.columnLength() == null ? null : NumberUtil.parseLong(ctx.columnLength().NUMBER().getText()))
+                .unsigned(ctx.UNSIGNED() != null)
                 .build();
     }
 
@@ -27,6 +37,14 @@ public class ColumnTypeVisitor extends DdlParserBaseVisitor<ColumnType> {
     public ColumnType visitTextType(DdlParser.TextTypeContext ctx) {
         return ColumnType.builder()
                 .type(ctx.TEXT().getText())
+                .length(ctx.columnLength() == null ? null : NumberUtil.parseLong(ctx.columnLength().NUMBER().getText()))
+                .build();
+    }
+
+    @Override
+    public ColumnType visitLongtextType(DdlParser.LongtextTypeContext ctx) {
+        return ColumnType.builder()
+                .type(ctx.LONGTEXT().getText())
                 .length(ctx.columnLength() == null ? null : NumberUtil.parseLong(ctx.columnLength().NUMBER().getText()))
                 .build();
     }

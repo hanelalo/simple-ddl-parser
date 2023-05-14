@@ -54,6 +54,17 @@ public class TableDdlParserListener extends DdlParserBaseListener {
     @Override
     public void enterIntType(DdlParser.IntTypeContext ctx) {
         populateColumnType(ctx.INT().getText());
+        if (Objects.nonNull(ctx.UNSIGNED())) {
+            current.currentColumn().getColumnType().setUnsigned(true);
+        }
+    }
+
+    @Override
+    public void enterBigintType(DdlParser.BigintTypeContext ctx) {
+        populateColumnType(ctx.BIGINT().getText());
+        if (Objects.nonNull(ctx.UNSIGNED())) {
+            current.currentColumn().getColumnType().setUnsigned(true);
+        }
     }
 
     @Override

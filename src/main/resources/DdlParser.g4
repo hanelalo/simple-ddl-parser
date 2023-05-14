@@ -16,11 +16,15 @@ columnOption: columnName columnType columnAttrOptions comment?;
 
 columnName: id;
 
-columnType: intType | varcharType | textType | dateType | datetimeType | timestampType;
+columnType: intType | bigintType | varcharType | textType | longtextType | dateType | datetimeType | timestampType;
 
-intType: INT | (INT LEFT_BRACKETS columnLength RIGHT_BRACKETS);
+intType: (INT | (INT LEFT_BRACKETS columnLength RIGHT_BRACKETS)) UNSIGNED?;
+
+bigintType: (BIGINT | (BIGINT LEFT_BRACKETS columnLength RIGHT_BRACKETS)) UNSIGNED?;
 
 textType: TEXT | (TEXT LEFT_BRACKETS columnLength RIGHT_BRACKETS);
+
+longtextType: LONGTEXT | (LONGTEXT LEFT_BRACKETS columnLength RIGHT_BRACKETS);
 
 columnLength: NUMBER;
 

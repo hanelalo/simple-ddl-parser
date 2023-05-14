@@ -65,11 +65,23 @@ public interface DdlParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIntType(DdlParser.IntTypeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link DdlParser#bigintType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBigintType(DdlParser.BigintTypeContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link DdlParser#textType}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTextType(DdlParser.TextTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#longtextType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLongtextType(DdlParser.LongtextTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link DdlParser#columnLength}.
 	 * @param ctx the parse tree

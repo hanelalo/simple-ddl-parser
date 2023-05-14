@@ -25,6 +25,9 @@ AUTO_INCRMENT: 'auto_increment';
 BACKQUOTE: '`';
 USING: 'using';
 BTREE: 'btree';
+UNSIGNED: 'unsigned';
+BIGINT: 'bigint';
+LONGTEXT: 'longtext';
 
 NUMBER: [0-9]+;
 ID: ([0-9a-z][0-9a-z_]*[0-9a-z]);

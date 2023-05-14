@@ -98,6 +98,16 @@ public interface DdlParserListener extends ParseTreeListener {
 	 */
 	void exitIntType(DdlParser.IntTypeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link DdlParser#bigintType}.
+	 * @param ctx the parse tree
+	 */
+	void enterBigintType(DdlParser.BigintTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#bigintType}.
+	 * @param ctx the parse tree
+	 */
+	void exitBigintType(DdlParser.BigintTypeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link DdlParser#textType}.
 	 * @param ctx the parse tree
 	 */
@@ -107,6 +117,16 @@ public interface DdlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTextType(DdlParser.TextTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#longtextType}.
+	 * @param ctx the parse tree
+	 */
+	void enterLongtextType(DdlParser.LongtextTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#longtextType}.
+	 * @param ctx the parse tree
+	 */
+	void exitLongtextType(DdlParser.LongtextTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link DdlParser#columnLength}.
 	 * @param ctx the parse tree

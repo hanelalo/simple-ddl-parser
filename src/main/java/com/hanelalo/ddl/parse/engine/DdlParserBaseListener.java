@@ -125,6 +125,18 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBigintType(DdlParser.BigintTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBigintType(DdlParser.BigintTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTextType(DdlParser.TextTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -132,6 +144,18 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTextType(DdlParser.TextTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLongtextType(DdlParser.LongtextTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLongtextType(DdlParser.LongtextTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
