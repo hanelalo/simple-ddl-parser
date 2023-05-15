@@ -54,21 +54,33 @@ nullOption: NULL | NOT NULL;
 
 defaultOption: DEFAULT defaultValue;
 
-defaultValue: ANY_STRING | NUMBER | (CURRENT_TIMESTAMP (ON UPDATE CURRENT_TIMESTAMP)?);
+defaultValue: ANY_STRING | NUMBER | NULL | (CURRENT_TIMESTAMP (ON UPDATE CURRENT_TIMESTAMP)?);
 
-indexOption: KEY indexName? LEFT_BRACKETS indexColumns RIGHT_BRACKETS (USING BTREE)?;
+indexOption: KEY indexName? LEFT_BRACKETS indexColumns RIGHT_BRACKETS (USING BTREE)? indexComment?;
+
+indexComment: COMMENT indexCommentContent;
+
+indexCommentContent: ANY_STRING;
 
 indexName: id;
 
 indexColumns: id (COMMA id)*;
 
-primaryKey: PRIMARY KEY primaryKeyName? LEFT_BRACKETS primaryKeyColumn RIGHT_BRACKETS;
+primaryKey: PRIMARY KEY primaryKeyName? LEFT_BRACKETS primaryKeyColumn RIGHT_BRACKETS primaryKeyComment?;
+
+primaryKeyComment: COMMENT primaryKeyCommentContent;
+
+primaryKeyCommentContent: ANY_STRING;
 
 primaryKeyName: id;
 
 primaryKeyColumn: id(COMMA id)*;
 
-uniqueKey: UNIQUE KEY uniqueKeyName? LEFT_BRACKETS uniqueKeyColumn RIGHT_BRACKETS;
+uniqueKey: UNIQUE KEY uniqueKeyName? LEFT_BRACKETS uniqueKeyColumn RIGHT_BRACKETS uniqueKeyComment?;
+
+uniqueKeyComment: COMMENT uniqueKeyCommentContent;
+
+uniqueKeyCommentContent: ANY_STRING;
 
 uniqueKeyName: id;
 
@@ -76,7 +88,7 @@ uniqueKeyColumn: id(COMMA id)*;
 
 tableOptions: tableOption*;
 
-tableOption: tableComment | autoIncrementTableOption;
+tableOption: tableComment | autoIncrementTableOption | tableEngineOption;
 
 tableComment: COMMENT EQUALS? tabelCommentContent;
 
@@ -84,4 +96,8 @@ tabelCommentContent: ANY_STRING;
 
 autoIncrementTableOption: AUTO_INCRMENT EQUALS? NUMBER;
 
-id: ID | (BACKQUOTE ID BACKQUOTE);
+tableEngineOption: ENGINE EQUALS? engineName;
+
+engineName: id;
+
+id: ID | BACK_QUOTE ID BACK_QUOTE;

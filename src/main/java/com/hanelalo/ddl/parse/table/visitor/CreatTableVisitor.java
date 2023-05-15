@@ -67,5 +67,9 @@ public class CreatTableVisitor extends DdlParserBaseVisitor<Table> {
         if (Objects.nonNull(autoIncrementTableOptionContext)) {
             table.setAutoIncrement(Long.parseLong(autoIncrementTableOptionContext.NUMBER().getText()));
         }
+        DdlParser.TableEngineOptionContext engineOptionContext = tableOptionContext.tableEngineOption();
+        if(Objects.nonNull(engineOptionContext)){
+            table.setEngine(engineOptionContext.engineName().id().ID().getText());
+        }
     }
 }

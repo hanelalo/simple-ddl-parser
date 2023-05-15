@@ -20,6 +20,8 @@ public class Table {
 
     private String tableName;
 
+    private String engine;
+
     private Comment comment;
 
     private Long autoIncrement;

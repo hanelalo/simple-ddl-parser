@@ -2,6 +2,7 @@ package com.hanelalo.ddl.parse.table.visitor;
 
 import com.hanelalo.ddl.parse.engine.DdlParser;
 import com.hanelalo.ddl.parse.engine.DdlParserBaseVisitor;
+import com.hanelalo.ddl.parse.table.Comment;
 import com.hanelalo.ddl.parse.table.Index;
 
 import java.util.Objects;
@@ -20,6 +21,14 @@ public class IndexOptionVisitor extends DdlParserBaseVisitor<Index> {
         index.setColumns(ctx.indexColumns().id().stream().map(id -> id.ID().getText()).collect(Collectors.toList()));
         if (Objects.nonNull(ctx.USING())) {
             index.setUsing("BTREE");
+        }
+        DdlParser.IndexCommentContext indexCommentContext = ctx.indexComment();
+        if(Objects.nonNull(indexCommentContext)){
+            String content = indexCommentContext.indexCommentContent().getText();
+            Comment comment = new Comment();
+            comment.setLimitedQuote(content.substring(0, 1));
+            comment.setCommentContent(content.substring(1, content.length() - 1));
+            index.setComment(comment);
         }
         return index;
     }

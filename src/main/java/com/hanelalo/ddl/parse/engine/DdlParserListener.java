@@ -288,6 +288,26 @@ public interface DdlParserListener extends ParseTreeListener {
 	 */
 	void exitIndexOption(DdlParser.IndexOptionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link DdlParser#indexComment}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndexComment(DdlParser.IndexCommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#indexComment}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndexComment(DdlParser.IndexCommentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#indexCommentContent}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndexCommentContent(DdlParser.IndexCommentContentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#indexCommentContent}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndexCommentContent(DdlParser.IndexCommentContentContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link DdlParser#indexName}.
 	 * @param ctx the parse tree
 	 */
@@ -318,6 +338,26 @@ public interface DdlParserListener extends ParseTreeListener {
 	 */
 	void exitPrimaryKey(DdlParser.PrimaryKeyContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link DdlParser#primaryKeyComment}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrimaryKeyComment(DdlParser.PrimaryKeyCommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#primaryKeyComment}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrimaryKeyComment(DdlParser.PrimaryKeyCommentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#primaryKeyCommentContent}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrimaryKeyCommentContent(DdlParser.PrimaryKeyCommentContentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#primaryKeyCommentContent}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrimaryKeyCommentContent(DdlParser.PrimaryKeyCommentContentContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link DdlParser#primaryKeyName}.
 	 * @param ctx the parse tree
 	 */
@@ -347,6 +387,26 @@ public interface DdlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUniqueKey(DdlParser.UniqueKeyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#uniqueKeyComment}.
+	 * @param ctx the parse tree
+	 */
+	void enterUniqueKeyComment(DdlParser.UniqueKeyCommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#uniqueKeyComment}.
+	 * @param ctx the parse tree
+	 */
+	void exitUniqueKeyComment(DdlParser.UniqueKeyCommentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#uniqueKeyCommentContent}.
+	 * @param ctx the parse tree
+	 */
+	void enterUniqueKeyCommentContent(DdlParser.UniqueKeyCommentContentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#uniqueKeyCommentContent}.
+	 * @param ctx the parse tree
+	 */
+	void exitUniqueKeyCommentContent(DdlParser.UniqueKeyCommentContentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link DdlParser#uniqueKeyName}.
 	 * @param ctx the parse tree
@@ -417,6 +477,26 @@ public interface DdlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAutoIncrementTableOption(DdlParser.AutoIncrementTableOptionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#tableEngineOption}.
+	 * @param ctx the parse tree
+	 */
+	void enterTableEngineOption(DdlParser.TableEngineOptionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#tableEngineOption}.
+	 * @param ctx the parse tree
+	 */
+	void exitTableEngineOption(DdlParser.TableEngineOptionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DdlParser#engineName}.
+	 * @param ctx the parse tree
+	 */
+	void enterEngineName(DdlParser.EngineNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DdlParser#engineName}.
+	 * @param ctx the parse tree
+	 */
+	void exitEngineName(DdlParser.EngineNameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link DdlParser#id}.
 	 * @param ctx the parse tree

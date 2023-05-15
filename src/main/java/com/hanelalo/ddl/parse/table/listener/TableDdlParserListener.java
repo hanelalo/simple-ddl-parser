@@ -44,6 +44,11 @@ public class TableDdlParserListener extends DdlParserBaseListener {
     }
 
     @Override
+    public void enterEngineName(DdlParser.EngineNameContext ctx) {
+        current.get().setEngine(ctx.id().ID().getText());
+    }
+
+    @Override
     public void enterColumnOption(DdlParser.ColumnOptionContext ctx) {
         String columnName = ctx.columnName().id().ID().getText();
         Column column = new Column();
@@ -138,6 +143,33 @@ public class TableDdlParserListener extends DdlParserBaseListener {
         comment.setLimitedQuote(commentStr.substring(0, 1));
         comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
         current.currentColumn().setComment(comment);
+    }
+
+    @Override
+    public void enterIndexCommentContent(DdlParser.IndexCommentContentContext ctx) {
+        String commentStr = ctx.getText();
+        Comment comment = new Comment();
+        comment.setLimitedQuote(commentStr.substring(0, 1));
+        comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
+        current.currentIndex().setComment(comment);
+    }
+
+    @Override
+    public void enterUniqueKeyCommentContent(DdlParser.UniqueKeyCommentContentContext ctx) {
+        String commentStr = ctx.getText();
+        Comment comment = new Comment();
+        comment.setLimitedQuote(commentStr.substring(0, 1));
+        comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
+        current.currentUniqueKey().setComment(comment);
+    }
+
+    @Override
+    public void enterPrimaryKeyCommentContent(DdlParser.PrimaryKeyCommentContentContext ctx) {
+        String commentStr = ctx.getText();
+        Comment comment = new Comment();
+        comment.setLimitedQuote(commentStr.substring(0, 1));
+        comment.setCommentContent(commentStr.substring(1, commentStr.length() - 1));
+        current.primaryKey().setComment(comment);
     }
 
     @Override

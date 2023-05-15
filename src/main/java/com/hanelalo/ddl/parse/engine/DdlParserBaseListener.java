@@ -353,6 +353,30 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIndexComment(DdlParser.IndexCommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIndexComment(DdlParser.IndexCommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIndexCommentContent(DdlParser.IndexCommentContentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIndexCommentContent(DdlParser.IndexCommentContentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIndexName(DdlParser.IndexNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -389,6 +413,30 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPrimaryKeyComment(DdlParser.PrimaryKeyCommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrimaryKeyComment(DdlParser.PrimaryKeyCommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrimaryKeyCommentContent(DdlParser.PrimaryKeyCommentContentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrimaryKeyCommentContent(DdlParser.PrimaryKeyCommentContentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrimaryKeyName(DdlParser.PrimaryKeyNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -420,6 +468,30 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUniqueKey(DdlParser.UniqueKeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUniqueKeyComment(DdlParser.UniqueKeyCommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUniqueKeyComment(DdlParser.UniqueKeyCommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUniqueKeyCommentContent(DdlParser.UniqueKeyCommentContentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUniqueKeyCommentContent(DdlParser.UniqueKeyCommentContentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -504,6 +576,30 @@ public class DdlParserBaseListener implements DdlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAutoIncrementTableOption(DdlParser.AutoIncrementTableOptionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTableEngineOption(DdlParser.TableEngineOptionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTableEngineOption(DdlParser.TableEngineOptionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEngineName(DdlParser.EngineNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEngineName(DdlParser.EngineNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

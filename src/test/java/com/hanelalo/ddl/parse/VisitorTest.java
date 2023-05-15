@@ -18,14 +18,14 @@ public class VisitorTest {
 
     @Test
     public void test() {
-        DdlLexer ddlLexer = new DdlLexer(CharStreams.fromString("create table t_fans_info\n" +
-                "(   id   int unsigned primary key auto_increment,\n" +
+        DdlLexer ddlLexer = new DdlLexer(CharStreams.fromString("--  creat t_fans_info \ncreate table `t_fans_info`\n" +
+                "(   id   int UNSIGNED primary key auto_increment,\n" +
                 "    name text(100) not null unique default 'haha',\n" +
                 "    time datetime default current_timestamp on update current_timestamp comment '时间',\n" +
-                "    primary key pk_id  (id,name),\n" +
-                "    unique key  (name),\n" +
-                "    key idx_time (time)\n" +
-                ") auto_increment 9991 comment '测试2';\n" +
+                "    primary key pk_id  (id,name) comment 'pk_c',\n" +
+                "    unique key  (name) comment 'uk_c',\n" +
+                "    key idx_time (time) comment 'key_c'\n" +
+                ") auto_increment 9991 comment '测试2' engine Innodb;\n" +
                 "create table t_fans_info_1\n" +
                 "(   id   int primary key auto_increment,\n" +
                 "    name text(100) null,\n" +
@@ -54,7 +54,7 @@ public class VisitorTest {
         assertNotNull(table.getComment());
         assertEquals("测试2", table.getComment().getCommentContent());
         assertEquals("'", table.getComment().getLimitedQuote());
-
+        assertEquals("Innodb", table.getEngine());
 
         List<Column> columns = table.getColumns();
         assertEquals(3, columns.size());
@@ -100,19 +100,22 @@ public class VisitorTest {
         assertEquals(2, table.getPrimaryKey().getColumns().size());
         assertEquals("id", table.getPrimaryKey().getColumns().get(0));
         assertEquals("name", table.getPrimaryKey().getColumns().get(1));
-
+        assertEquals("pk_c",table.getPrimaryKey().getComment().getCommentContent());
+        assertEquals("'",table.getPrimaryKey().getComment().getLimitedQuote());
 
         assertEquals(1, table.getUniqueKeys().size());
         assertNull(table.getUniqueKeys().get(0).getName());
         assertEquals(1, table.getUniqueKeys().get(0).getColumns().size());
         assertEquals("name", table.getUniqueKeys().get(0).getColumns().get(0));
-
+        assertEquals("uk_c",table.getUniqueKeys().get(0).getComment().getCommentContent());
+        assertEquals("'",table.getUniqueKeys().get(0).getComment().getLimitedQuote());
 
         assertEquals(1, table.getIndices().size());
         assertEquals("idx_time",table.getIndices().get(0).getName());
         assertEquals(1, table.getIndices().get(0).getColumns().size());
         assertEquals("time", table.getIndices().get(0).getColumns().get(0));
-
+        assertEquals("key_c",table.getIndices().get(0).getComment().getCommentContent());
+        assertEquals("'",table.getIndices().get(0).getComment().getLimitedQuote());
     }
 
 

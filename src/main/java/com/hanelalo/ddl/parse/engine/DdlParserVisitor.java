@@ -179,6 +179,18 @@ public interface DdlParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIndexOption(DdlParser.IndexOptionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link DdlParser#indexComment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIndexComment(DdlParser.IndexCommentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#indexCommentContent}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIndexCommentContent(DdlParser.IndexCommentContentContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link DdlParser#indexName}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -197,6 +209,18 @@ public interface DdlParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrimaryKey(DdlParser.PrimaryKeyContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link DdlParser#primaryKeyComment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrimaryKeyComment(DdlParser.PrimaryKeyCommentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#primaryKeyCommentContent}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrimaryKeyCommentContent(DdlParser.PrimaryKeyCommentContentContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link DdlParser#primaryKeyName}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -214,6 +238,18 @@ public interface DdlParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitUniqueKey(DdlParser.UniqueKeyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#uniqueKeyComment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUniqueKeyComment(DdlParser.UniqueKeyCommentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#uniqueKeyCommentContent}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUniqueKeyCommentContent(DdlParser.UniqueKeyCommentContentContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link DdlParser#uniqueKeyName}.
 	 * @param ctx the parse tree
@@ -256,6 +292,18 @@ public interface DdlParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAutoIncrementTableOption(DdlParser.AutoIncrementTableOptionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#tableEngineOption}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTableEngineOption(DdlParser.TableEngineOptionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DdlParser#engineName}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEngineName(DdlParser.EngineNameContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link DdlParser#id}.
 	 * @param ctx the parse tree
